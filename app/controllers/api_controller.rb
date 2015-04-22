@@ -57,12 +57,15 @@ class ApiController < ApplicationController
     #================================================
   end
 
-  def meme_process_form
+  def meme_gen_process
     #=== Instructions ===================================
     # Create a meme based on user-submitted info
     #
     # Ref: http://apimeme.com/
     #================================================
+    top_text = params["top_text"]
+    bottom_text = params["bottom_text"]
+    @result = "http://apimeme.com/meme?meme=Condescending+Wonka&top=#{top_text}&bottom=#{bottom_text}"
   end
 
   def congress_form

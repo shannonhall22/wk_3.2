@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get('/api/congress_form', { :controller => "api", :action => "congress_form"})
   get('/api/congress_process', { :controller => "api", :action => "congress_process"})
 
+  get('/api/meme_gen_form', { :controller => "api", :action => "meme_gen_form"})
+  get('/api/meme_gen_process', { :controller => "api", :action => "meme_gen_process"})
+
   get('/api/random_user', { :controller => "api", :action => "random_user"})
 
   get('/api/wiki_image_form', { :controller => "api", :action => "wiki_image_form"})
