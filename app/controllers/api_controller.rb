@@ -82,6 +82,14 @@ class ApiController < ApplicationController
     #
     # Ref: http://api.randomuser.me/
     #================================================
+
+    url = "http://api.randomuser.me/"
+    response = open(url).read
+    user = JSON.parse(response)
+
+    @name = user["results"][0]["user"]["name"]["first"]
+    @gender = user["results"][0]["user"]["gender"]
+    @picture = user["results"][0]["user"]["picture"]["medium"]
   end
 
   def wiki_image_form
@@ -89,6 +97,7 @@ class ApiController < ApplicationController
     # Create a form to send a keyword to the wiki_image_process
     # action
     #================================================
+
   end
 
   def wiki_image_process
