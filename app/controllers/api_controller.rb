@@ -82,12 +82,14 @@ class ApiController < ApplicationController
     #
     # Ref: http://www.loc.gov/pictures/search/?q=computer&fo=json
     #================================================
-    keyword = URI.encode(params[:keyword])
+    keyword = params["keyword"]
     url = "http://www.loc.gov/pictures/search/?q=#{keyword}&fo=json"
-    response = open(url).read
-    user_input = JSON.parse(response)
-    image = user_input["results"][0]["image"]["full"]
-    @result = image
+    interpret = open(url).read
+    parsed_info = JSON.parse(interpret)
+
+    search = parsed_info["results"][0]["image"]["full"]
+
+    @result = search
   end
 
   def random_user
