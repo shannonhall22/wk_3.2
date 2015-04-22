@@ -38,7 +38,14 @@ class ApiController < ApplicationController
     # Ref: https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA
     # as an example
     #================================================
-    @coords = "An array with your coordinates inside"
+    address = params["address"]
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{address}"
+    response = open(url).read
+    output = JSON.parse(response)
+    @lat = output["results"][0]["geometry"]["location"]["lat"].round
+    @lng = output["results"][0]["geometry"]["location"]["lng"].round
+
+    @coords = [@lat, @lng]
   end
 
   def meme_gen_form
