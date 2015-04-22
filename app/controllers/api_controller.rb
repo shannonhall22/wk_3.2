@@ -12,7 +12,13 @@ class ApiController < ApplicationController
     #
     # Ref: http://isithackday.com/arrpi.php?
     #================================================
-    @result = "Replace this string with your answer"
+    english = params["text"]
+    url = "http://isithackday.com/arrpi.php?text=#{english}&format=json"
+    response = open(url).read
+    translate = JSON.parse(response)
+    message = translate["translation"]["pirate"]
+
+    @result = message
   end
 
 
@@ -107,9 +113,16 @@ class ApiController < ApplicationController
     #
     # Ref: http://techslides.com/grab-wikipedia-pictures-by-api-with-php
     #================================================
+    # keyword = URI.encode(params["keyword"])
+    # url= "http://en.wikipedia.org/w/api.php?action=query&titles=File:#{keyword}.png&prop=imageinfo&iiprop=url&format=json"
+    # image = open(url).read
+
+
+
+    @result = output
   end
 
-  def nearest_station
+  def nearest_station_form
     #=== Instructions ===================================
     # Use the Divvy API to display all stations that have at least
     # 5 bikes available
@@ -119,5 +132,14 @@ class ApiController < ApplicationController
     #
     # Ref: http://www.divvybikes.com/stations/json/
     #================================================
+  end
+
+  def nearest_station_process
+    location = URI.encode(params[:location])
+    url = "http://www.divvybikes.com/stations/json/"
+    response = open(url).read
+    basic = JSON.parse(response)
+
+
   end
 end
