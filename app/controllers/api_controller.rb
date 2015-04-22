@@ -125,13 +125,16 @@ class ApiController < ApplicationController
     #
     # Ref: http://techslides.com/grab-wikipedia-pictures-by-api-with-php
     #================================================
-    # keyword = URI.encode(params["keyword"])
-    # url= "http://en.wikipedia.org/w/api.php?action=query&titles=File:#{keyword}.png&prop=imageinfo&iiprop=url&format=json"
-    # image = open(url).read
 
 
+    keyword = params["keyword"]
+    url = "http://en.wikipedia.org/w/api.php?action=query&titles=#{keyword}&prop=images&format=json"
+    interpret = open(url).read
+    parsed_info = JSON.parse(interpret)
+    image = parsed_info["query"]["pages"]
 
-    @result = output
+    @result = image
+
   end
 
   def nearest_station_form
