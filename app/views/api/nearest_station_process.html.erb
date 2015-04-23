@@ -1,3 +1,8 @@
+<h3>The closest stations to <%= @location.gsub("%20"," ") %> with 5 bikes or more are:</h3>
 
-
-<%= @result %>
+<ul>
+<%= @loop.each do |station| %>
+  <li><%= station["availableBikes"] > 4 %>
+  </li>
+<% end %>
+</ul>

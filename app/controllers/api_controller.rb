@@ -127,13 +127,15 @@ class ApiController < ApplicationController
     #================================================
 
 
-    keyword = params["keyword"]
-    url = "http://en.wikipedia.org/w/api.php?action=query&titles=#{keyword}&prop=images&format=json"
-    interpret = open(url).read
-    parsed_info = JSON.parse(interpret)
-    image = parsed_info["query"]["pages"]
+    # keyword = params["keyword"]
+    # url = "http://en.wikipedia.org/w/api.php?action=query&titles=#{keyword}&prop=images&format=json"
+    # interpret = open(url).read
+    # parsed_info = JSON.parse(interpret)
+    # image = parsed_info["query"]["pages"]
 
-    @result = image
+
+
+    # @result = image
 
   end
 
@@ -150,11 +152,12 @@ class ApiController < ApplicationController
   end
 
   def nearest_station_process
-    location = URI.encode(params[:location])
+    @location = URI.encode(params[:location])
     url = "http://www.divvybikes.com/stations/json/"
     response = open(url).read
     basic = JSON.parse(response)
 
-
+    @loop = basic["stationBeanList"]
   end
+
 end
