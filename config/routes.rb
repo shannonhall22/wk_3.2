@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get('/api/nearest_station_form', { :controller => "api", :action => "nearest_station_form"})
   get('/api/nearest_station_process', { :controller => "api", :action => "nearest_station_process"})
+  get('/api/nearest_station_process_2', { :controller => "api", :action => "nearest_station_process_2"})
 
   get('/auth_api/mashape_intro_form', { :controller => "auth_api", :action => "mashape_intro_form"})
   get('/auth_api/mashape_intro_process', { :controller => "auth_api", :action => "mashape_intro_process"})

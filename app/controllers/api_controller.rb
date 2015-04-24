@@ -158,6 +158,7 @@ class ApiController < ApplicationController
     basic = JSON.parse(response)
 
     @loop = basic["stationBeanList"]
-  end
 
+  end
 end
+
